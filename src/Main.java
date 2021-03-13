@@ -30,7 +30,7 @@ public class Main {
 
             int diff = Math.abs(prices[i] - search);
 
-            int x = bSearch(prices,0,prices.length, search);
+            int x = bSearch(prices, search);
 
             if (x >= 0 && x != i && diff<minDiff) {
                     minDiff = diff;
@@ -45,44 +45,22 @@ public class Main {
         return array;
     }
 
-/*
-    private static int bSearch(int[] array,int i,int j,int x) {
-        int pos = -1;
-        while (i <= j && pos<0) {
+
+    private static int bSearch(int[] array,int x) {
+        int i=0;
+        int j =array.length-1;
+        while (i <= j ) {
             int m = (j + i) / 2;
             if (array[m] == x) {
-                pos = m;
+                return m;
             } else if (array[m] > x) {
                 j = m - 1;
             } else {
                 i = m + 1;
             }
         }
-        return pos;
+        return -1;
     }
-    */
-
-
-
-
-
-    private static int bSearch(int[] a, int fromIndex, int toIndex,
-                                     int key) {
-        int low = fromIndex;
-        int high = toIndex - 1;
-
-        while (low <= high) {
-            int mid = (low + high) >>> 1;
-            int midVal = a[mid];
-
-            if (midVal < key)
-                low = mid + 1;
-            else if (midVal > key)
-                high = mid - 1;
-            else
-                return mid; // key found
-        }
-        return -(low + 1);  // key not found.
-    }
+    
 
 }
